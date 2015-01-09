@@ -39,7 +39,7 @@ RHFirmModel support nested dictionary converted into model.Like a user has a add
          	
 	Use 
 	
-		[User modelWithDictionary:userDict]
+		User *user = [User modelWithDictionary:userDict]
 		
  	Set values to a User instance.
 	

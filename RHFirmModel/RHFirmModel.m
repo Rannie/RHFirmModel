@@ -19,6 +19,11 @@
 
 static void *RHFModelCachedPropertiesKey = &RHFModelCachedPropertiesKey;
 
+static NSString * const RHFModelErrorDomain = @"domain.model.RHFModel";
+#ifndef DEBUG
+static const NSInteger RHFModelErrorExceptionThrown = 1;
+#endif
+
 FOUNDATION_STATIC_INLINE BOOL UValidateAndSetValue(id obj, NSString *key, id value, BOOL forceUpdate, NSError **error) {
   __autoreleasing id validateValue = value;
 
@@ -34,9 +39,16 @@ FOUNDATION_STATIC_INLINE BOOL UValidateAndSetValue(id obj, NSString *key, id val
   @catch (NSException *exception) {
     RLog(@"Model : Caught exception setting key \"%@\" : %@", key, exception);
     
-  #ifdef DEBUG
+#ifdef DEBUG
     @throw exception;
-  #endif
+    
+#else
+    if (error != NULL) {
+      NSDictionary *userInfo = @{NSLocalizedDescriptionKey: exception.description,
+                                 NSLocalizedFailureReasonErrorKey: exception.reason};
+      *error = [NSError errorWithDomain:RHFModelErrorDomain code:RHFModelErrorExceptionThrown userInfo:userInfo];
+    }
+#endif
   }
 }
 
@@ -214,6 +226,42 @@ SEL RHFSelectorWithCapitalizedKeyPattern(const char *prefix, NSString *key, cons
   }
 }
 
+#pragma mark - JSON
++ (instancetype)modelWithJSONString:(NSString *)JSONString {
+  return [[self alloc] initWithJSONString:JSONString error:nil];
+}
+
+- (instancetype)initWithJSONString:(NSString *)JSONString error:(NSError *__autoreleasing *)error {
+  id jsonObj = [NSJSONSerialization JSONObjectWithData:[JSONString dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:error];
+  if (error != NULL) {
+    RLog(@"Model : Serialization JSON error");
+    return nil;
+  }
+  
+  if (![jsonObj isKindOfClass:NSDictionary.class]) {
+    RLog(@"Model : Wrong JSON Format");
+    return nil;
+  }
+  
+  return [self initWithDictionary:jsonObj error:error];
+}
+
+- (NSString *)toJSONString {
+  NSData *jsonData = nil;
+  NSError *jsonError = nil;
+  
+  @try {
+    NSDictionary *dict = [self dictionaryValue];
+    jsonData = [NSJSONSerialization dataWithJSONObject:dict options:kNilOptions error:&jsonError];
+  }
+  @catch (NSException *exception) {
+    RLog(@"Model : to json exception %@", exception.description);
+    return nil;
+  }
+  
+  return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+}
+
   # pragma mark - Other Method
 - (BOOL)isEqual:(RHFirmModel *)object {
   if (self == object) return YES;
@@ -234,23 +282,7 @@ SEL RHFSelectorWithCapitalizedKeyPattern(const char *prefix, NSString *key, cons
 // subclass impl if needed...
 }
 
-- (NSString *)toJSONString {
-  NSData *jsonData = nil;
-  NSError *jsonError = nil;
-
-  @try {
-    NSDictionary *dict = [self dictionaryValue];
-    jsonData = [NSJSONSerialization dataWithJSONObject:dict options:kNilOptions error:&jsonError];
-  }
-  @catch (NSException *exception) {
-    RLog(@"Model : to json exception %@", exception.description);
-    return nil;
-  }
-
-  return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-}
-
-  - (NSDictionary *)toDictionaryWithKeys:(NSArray *)propertyNames {
+- (NSDictionary *)toDictionaryWithKeys:(NSArray *)propertyNames {
   NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:propertyNames.count];
   id value = nil;
 
@@ -260,8 +292,8 @@ SEL RHFSelectorWithCapitalizedKeyPattern(const char *prefix, NSString *key, cons
     value = self.dictionaryValue[propertyName];
     
     if ([value isKindOfClass:RHFirmModel.class]) {
-        RHFirmModel *temp = value;
-        value = [temp toDictionaryWithKeys:[temp.class.propertyKeys allObjects]];
+      RHFirmModel *temp = value;
+      value = [temp toDictionaryWithKeys:[temp.class.propertyKeys allObjects]];
     }
     
     if ([value isKindOfClass:NSArray.class]) {
@@ -283,7 +315,7 @@ SEL RHFSelectorWithCapitalizedKeyPattern(const char *prefix, NSString *key, cons
   }
 
   return [dict copy];
-  }
+}
 
   - (NSString *)description {
   return [NSString stringWithFormat:@"<%@: %p> %@", self.class, self, self.dictionaryValue];
