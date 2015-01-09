@@ -23,6 +23,9 @@
 - (void)mergeValueForKey:(NSString *)key fromModel:(RHFirmModel *)model;
 - (void)mergeValuesForKeysFromModel:(RHFirmModel *)model;
 
++ (instancetype)modelWithJSONString:(NSString *)JSONString;
+- (instancetype)initWithJSONString:(NSString *)JSONString error:(NSError **)error;
+
 - (NSString *)toJSONString;
 
 - (NSDictionary *)toDictionaryWithKeys:(NSArray *)propertyNames;
