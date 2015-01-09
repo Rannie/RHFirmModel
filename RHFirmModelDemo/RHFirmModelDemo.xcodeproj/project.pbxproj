@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D8BB7921A60172D00E3ACE5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8BB78F1A60172D00E3ACE5 /* User.m */; };
+		4D8BB7931A60172D00E3ACE5 /* UserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8BB7911A60172D00E3ACE5 /* UserService.m */; };
 		4DCA74321A5FC52E00CE3F6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA74311A5FC52E00CE3F6C /* main.m */; };
 		4DCA74351A5FC52E00CE3F6C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA74341A5FC52E00CE3F6C /* AppDelegate.m */; };
 		4DCA74381A5FC52E00CE3F6C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA74371A5FC52E00CE3F6C /* ViewController.m */; };
@@ -17,8 +19,6 @@
 		4DCA745D1A5FC55D00CE3F6C /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA74591A5FC55D00CE3F6C /* EXTRuntimeExtensions.m */; };
 		4DCA745E1A5FC55D00CE3F6C /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA745B1A5FC55D00CE3F6C /* EXTScope.m */; };
 		4DCA74611A5FC57600CE3F6C /* RHFirmModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA74601A5FC57600CE3F6C /* RHFirmModel.m */; };
-		4DCA74641A5FD1E400CE3F6C /* UserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA74631A5FD1E400CE3F6C /* UserService.m */; };
-		4DCA74671A5FD21B00CE3F6C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA74661A5FD21B00CE3F6C /* User.m */; };
 		4DCA746A1A5FD23100CE3F6C /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DCA74691A5FD23100CE3F6C /* Address.m */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +33,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D8BB78E1A60172D00E3ACE5 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		4D8BB78F1A60172D00E3ACE5 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		4D8BB7901A60172D00E3ACE5 /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserService.h; sourceTree = "<group>"; };
+		4D8BB7911A60172D00E3ACE5 /* UserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserService.m; sourceTree = "<group>"; };
 		4DCA742C1A5FC52E00CE3F6C /* RHFirmModelDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RHFirmModelDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DCA74301A5FC52E00CE3F6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DCA74311A5FC52E00CE3F6C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -54,10 +58,6 @@
 		4DCA745C1A5FC55D00CE3F6C /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
 		4DCA745F1A5FC57600CE3F6C /* RHFirmModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHFirmModel.h; sourceTree = "<group>"; };
 		4DCA74601A5FC57600CE3F6C /* RHFirmModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHFirmModel.m; sourceTree = "<group>"; };
-		4DCA74621A5FD1E400CE3F6C /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserService.h; path = RHFirmModel/UserService.h; sourceTree = "<group>"; };
-		4DCA74631A5FD1E400CE3F6C /* UserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserService.m; path = RHFirmModel/UserService.m; sourceTree = "<group>"; };
-		4DCA74651A5FD21B00CE3F6C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = RHFirmModel/User.h; sourceTree = "<group>"; };
-		4DCA74661A5FD21B00CE3F6C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = RHFirmModel/User.m; sourceTree = "<group>"; };
 		4DCA74681A5FD23100CE3F6C /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
 		4DCA74691A5FD23100CE3F6C /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,12 +103,12 @@
 		4DCA742E1A5FC52E00CE3F6C /* RHFirmModelDemo */ = {
 			isa = PBXGroup;
 			children = (
-				4DCA74651A5FD21B00CE3F6C /* User.h */,
-				4DCA74661A5FD21B00CE3F6C /* User.m */,
+				4D8BB78E1A60172D00E3ACE5 /* User.h */,
+				4D8BB78F1A60172D00E3ACE5 /* User.m */,
+				4D8BB7901A60172D00E3ACE5 /* UserService.h */,
+				4D8BB7911A60172D00E3ACE5 /* UserService.m */,
 				4DCA74681A5FD23100CE3F6C /* Address.h */,
 				4DCA74691A5FD23100CE3F6C /* Address.m */,
-				4DCA74621A5FD1E400CE3F6C /* UserService.h */,
-				4DCA74631A5FD1E400CE3F6C /* UserService.m */,
 				4DCA74331A5FC52E00CE3F6C /* AppDelegate.h */,
 				4DCA74341A5FC52E00CE3F6C /* AppDelegate.m */,
 				4DCA74361A5FC52E00CE3F6C /* ViewController.h */,
@@ -271,14 +271,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D8BB7921A60172D00E3ACE5 /* User.m in Sources */,
 				4DCA746A1A5FD23100CE3F6C /* Address.m in Sources */,
-				4DCA74671A5FD21B00CE3F6C /* User.m in Sources */,
 				4DCA745E1A5FC55D00CE3F6C /* EXTScope.m in Sources */,
 				4DCA74611A5FC57600CE3F6C /* RHFirmModel.m in Sources */,
-				4DCA74641A5FD1E400CE3F6C /* UserService.m in Sources */,
 				4DCA74381A5FC52E00CE3F6C /* ViewController.m in Sources */,
 				4DCA74351A5FC52E00CE3F6C /* AppDelegate.m in Sources */,
 				4DCA745D1A5FC55D00CE3F6C /* EXTRuntimeExtensions.m in Sources */,
+				4D8BB7931A60172D00E3ACE5 /* UserService.m in Sources */,
 				4DCA74321A5FC52E00CE3F6C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
